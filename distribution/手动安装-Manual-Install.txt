@@ -1,4 +1,4 @@
-Manual installation / 手动安装
+﻿Manual installation / 手动安装
 
 首选 Setup.cmd。手动安装前核对 README 的版本、路径和离线要求，并备份现有文件。
 Use Setup.cmd where possible. Check README requirements and back up existing files first.

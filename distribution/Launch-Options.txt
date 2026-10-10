@@ -1,4 +1,4 @@
-WINDOWS / 完整一行，仅用于生成本包离线配置后的 Windows 启动
+﻿WINDOWS / 完整一行，仅用于生成本包离线配置后的 Windows 启动
 cmd /d /c "set EOS_USE_ANTICHEATCLIENTNULL=1&& %command% -anticheat_settings=AC8SkinManager_Offline.json"
 
 Keep %command% and the closing quote. 保留 %command% 和末尾英文双引号。

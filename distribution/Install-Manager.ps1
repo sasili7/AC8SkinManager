@@ -1,4 +1,4 @@
-param([string]$GamePath)
+﻿param([string]$GamePath)
 $ErrorActionPreference = 'Stop'
 function Get-SHA256([string]$Path) {
     $stream = [System.IO.File]::OpenRead($Path)

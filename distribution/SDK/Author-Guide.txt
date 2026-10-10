@@ -1,4 +1,4 @@
-AC8 Skin Manager — Author API v1 / 作者接入
+﻿AC8 Skin Manager — Author API v1 / 作者接入
 
 每个皮肤包对应一个机型、一种皮肤；用独立资源路径，不覆盖游戏原贴图。
 One aircraft and one livery per pack. Use independent resource paths, not overrides of original textures.

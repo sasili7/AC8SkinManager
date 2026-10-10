@@ -1,4 +1,4 @@
-param([string]$GamePath, [switch]$InstallUE4SS, [switch]$ConfigureOffline, [switch]$NoUI)
+﻿param([string]$GamePath, [switch]$InstallUE4SS, [switch]$ConfigureOffline, [switch]$NoUI)
 $ErrorActionPreference = 'Stop'
 $created = New-Object System.Collections.Generic.List[string]
 function Get-Hash([string]$Path) {

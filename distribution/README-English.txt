@@ -1,4 +1,4 @@
-AC8 Skin Manager 0.8.1 — by sasili
+﻿AC8 Skin Manager 0.8.1 — by sasili
 
 Per-aircraft livery buttons in aircraft selection, with saved independent choices.
 Includes the in-game MOD, AC8OverrideLoader 0.2.0, optional UE4SS and setup scripts.

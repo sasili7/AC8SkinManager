@@ -1,4 +1,4 @@
-AC8 Skin Manager 0.8.1 — 作者 sasili
+﻿AC8 Skin Manager 0.8.1 — 作者 sasili
 
 在选机界面按机型显示独立涂装按钮，保存每架飞机的选择。
 本包包含游戏内管理器、AC8OverrideLoader 0.2.0、可选 UE4SS 和安装脚本。
