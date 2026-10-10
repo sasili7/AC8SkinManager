@@ -1,0 +1,18 @@
+0.8.1 — 2026-10-10
+Read-only on-demand binding capture, original-texture picker, grouped slots, record import/export, native save dialog.
+按需只读材质采集、原贴图选择、多槽位填写、记录导入导出及桌面保存。
+Existing bindings and imported profiles are preserved. Native/MOD coexistence is unchanged.
+
+0.8.0
+Per-aircraft independent livery selection, STD/native coexistence and weapon-page visibility.
+Bounded automatic restoration and cached discovery reduce repeated object scans.
+Install checks exact game/UE4SS versions, x64 runtime files and package hashes.
+Fixed disabled legacy-loader markers blocking installation.
+Reject redirected destinations, unsupported path encodings and overlong game paths before copying.
+Optional bundled UE4SS installs missing files and preserves existing settings.
+Optional offline configuration is generated from the player's own Settings.json.
+Desktop importer and painting tool are separate downloads.
+
+2026-10-10 compatibility patch / 兼容性修订
+- Refuse incomplete/conflicting UE4SS bootstraps and offer missing-file repair. / 检查 UE4SS 启动文件并可补齐缺失文件。
+- Skip empty skin.json without hiding other valid skins. / 空涂装清单不再影响其它正常涂装。

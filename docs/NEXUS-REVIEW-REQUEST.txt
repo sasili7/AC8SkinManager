@@ -1,0 +1,18 @@
+Subject: Request for review of quarantined AC8 Skin Manager v0.8.1
+
+Hello Nexus Mods team,
+
+My AC8 Skin Manager v0.8.1 upload has been quarantined by the automated safety checks. Please review the file.
+
+Mod page: [insert the Nexus mod-page URL]
+Affected file: [insert the Nexus file ID/name]
+Source repository: https://github.com/sasili7/AC8SkinManager
+Build instructions: https://github.com/sasili7/AC8SkinManager/blob/main/docs/BUILD.md
+Compiled-component explanation: https://github.com/sasili7/AC8SkinManager/blob/main/docs/REVIEW.md
+Third-party components and licenses: https://github.com/sasili7/AC8SkinManager/blob/main/docs/THIRD-PARTY.md
+Original release hashes: https://github.com/sasili7/AC8SkinManager/blob/main/release-files/SHA256SUMS.txt
+
+The package includes a Python/PyInstaller desktop tool, a C registrar DLL, AC8OverrideLoader, and optional UE4SS. It is intended only for offline single-player livery management. The repository includes source and build information for the custom compiled components and links to the third-party upstream projects.
+
+Thank you,
+sasili

@@ -1,0 +1,13 @@
+{
+  "version": "0.8.1",
+  "desktop_source_build": "passed",
+  "registrar_source_build": "passed",
+  "independent_unit_tests": 18,
+  "optional_fixture_tests_skipped": 20,
+  "framework_mock_checks": 54,
+  "stability_mock_checks": 21,
+  "binding_capture_read_only_checks": "passed",
+  "shipped_lua_sources_equal_archive": true,
+  "source_game_assets_included": false,
+  "scope": "Build and isolated source-checkout tests; no new live-game validation was performed for this upload."
+}

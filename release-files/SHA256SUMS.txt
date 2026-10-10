@@ -1,0 +1,2 @@
+b0b15cb503f81df01a71b08a9ea04961632535cf8131888c782c36b5bda95043  AC8SkinManager-v0.8.1-Nexus.zip
+5bed0d5230c31a6e1eb1b39ffa6b0ba261d1c2f44f3dc18463619a7e0c09107d  AC8SkinPackTool-v0.8.1.exe

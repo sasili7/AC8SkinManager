@@ -1,0 +1,316 @@
+{
+  "version": "0.8.1",
+  "archive_sha256": "b0b15cb503f81df01a71b08a9ea04961632535cf8131888c782c36b5bda95043",
+  "files": [
+    {
+      "path": "AC8SkinPackTool.exe",
+      "bytes": 18457528,
+      "sha256": "5bed0d5230c31a6e1eb1b39ffa6b0ba261d1c2f44f3dc18463619a7e0c09107d"
+    },
+    {
+      "path": "CHANGELOG.txt",
+      "bytes": 1286,
+      "sha256": "c4d0d3f837affb8f0e2536e1270df26da2fdb0cda48e4044e677cc13ee99cc2e"
+    },
+    {
+      "path": "compatibility.json",
+      "bytes": 10243,
+      "sha256": "35a69fa548b4a159f4a3e0b13a2c45d77142b00c11212a97887475b61c73e448"
+    },
+    {
+      "path": "English_User_Guide.docx",
+      "bytes": 874951,
+      "sha256": "36d8a4327aed517d0c72b41ef55cf27567f1f1b3805287d1003e4ffb345b14d7"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8OverrideLoader/dlls/main.dll",
+      "bytes": 39936,
+      "sha256": "225c8d6c3fbf5e8882cb8e334dbd3426cb24a1415b3585073cc4264ae834f851"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8OverrideLoader/enabled.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8OverrideLoader/payloads/PLACE_MOD_COLLECTIONS_HERE.txt",
+      "bytes": 125,
+      "sha256": "081d36afc729d4f1ac4dfe34995b658ac4fce88659b4e7804131ee9e9a391e4b"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/BindingProfiles/README.txt",
+      "bytes": 147,
+      "sha256": "da2c0a8c6b7326084eefd4f4f5c223b6ff1357d946dace7f31ff11cb4b1cc8b4"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/catalog.json",
+      "bytes": 5707,
+      "sha256": "349708eec2226c9e91ecccea9bae78bcb9f5454bc8c06c9885e9674930a83e3d"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/compatibility.json",
+      "bytes": 547,
+      "sha256": "79a456635f5bcdc1886bcd0971d3b6d14a54bf4712983071e16f22489eb83596"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/config.defaults.json",
+      "bytes": 289,
+      "sha256": "5963b49e9b832ed64b23f4408d68c5dbf87de03dc9ffed45aab9a4eab4878eeb"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/enabled.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Native/build-checks.json",
+      "bytes": 856,
+      "sha256": "949602c7c1f99a56325ddc5996dd86d38655ad78fca06df0acbdfd052792e7fb"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Native/registrar.dll",
+      "bytes": 179200,
+      "sha256": "80eef7bd18675555f28955ff3bb63b5cf40ee41ab34c954898a7f21ee7e8080b"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/adapter.lua",
+      "bytes": 39230,
+      "sha256": "8f5d30569f31be1d374bc90f0e448cdf4e97d5db981c570c4a451b4bf99626af"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/binding_capture.lua",
+      "bytes": 5130,
+      "sha256": "fcc197386eb1b5f7c21ad936bccf8fee54f912772e3e3e20bc26bf010c1a930a"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/core.lua",
+      "bytes": 4297,
+      "sha256": "202234856012f59e8a9322266f3204107cd0cfc4e01e205e301c0a91eb04dc2f"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/json.lua",
+      "bytes": 9638,
+      "sha256": "0eaccda57fabc0330736de25f45cf589821a42b5e0fe02e4e3125f7dc0bf2b7e"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/main.lua",
+      "bytes": 17024,
+      "sha256": "5e8bb312f72e797e94b7d26b8ecdae8708571d115c999f50847eb675a2e37ed9"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/menu.lua",
+      "bytes": 11026,
+      "sha256": "401c4a693863c30b2e8ab9e85c9eff16141fc94d22212200d07ef117908e231a"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/native_mode.lua",
+      "bytes": 2457,
+      "sha256": "6c70f202993c8be86ed54675f7db4aab843b55800808a27754a0606429a2d94a"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/presentation.lua",
+      "bytes": 2035,
+      "sha256": "cb3be8780501d53a17788327f74d6954467cfebcdebf10b7d088b7ba7a40df04"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/registry.lua",
+      "bytes": 5290,
+      "sha256": "3a1586bd5da18d821835162adff634903ac133fbcfccaae63a249caf68fd20e8"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/storage.lua",
+      "bytes": 3136,
+      "sha256": "01dc0351cf3a107daa87188a80c46109e484683b7f43cc619c53c9e9a12a6e83"
+    },
+    {
+      "path": "Install-Manager.cmd",
+      "bytes": 108,
+      "sha256": "88e099125787c117316ad404fe6d34ef424399128332e2a9bee42a1c367eea04"
+    },
+    {
+      "path": "Install-Manager.ps1",
+      "bytes": 10467,
+      "sha256": "6e25fc3ee72695833a04f8f9680de36f2189a8aed11f0e882a532731138c93b0"
+    },
+    {
+      "path": "Launch-Options.txt",
+      "bytes": 541,
+      "sha256": "1fb645e955ade30255880a88763bc97d78fe39af12f19dfdcf3d56558bee89cf"
+    },
+    {
+      "path": "LICENSE.txt",
+      "bytes": 1151,
+      "sha256": "27c1b21a742bd942d912f0835f78f83c0d608875935911cb22dfc7f6893ea6a6"
+    },
+    {
+      "path": "Licenses/AC8OverrideLoader-MIT.txt",
+      "bytes": 1072,
+      "sha256": "715ab3f042d8733cd5a6bca27b705c43e593e150a86465bcdbf1d39ae4af14d9"
+    },
+    {
+      "path": "Licenses/AC8OverrideLoader-Third-Party/IoStoreLoaderMod-LICENSE.txt",
+      "bytes": 1063,
+      "sha256": "89942dd4d5a1eb735aca6940eda9134d5434a3f67aabedb62be0774abcde36b0"
+    },
+    {
+      "path": "Licenses/AC8OverrideLoader-Third-Party/MinHook-LICENSE.txt",
+      "bytes": 4365,
+      "sha256": "d5c2224982b0b95a16b098a561335fa93f3eaf4d0aa964b7843edb986df78dc8"
+    },
+    {
+      "path": "Licenses/AC8OverrideLoader-THIRD-PARTY.md",
+      "bytes": 181,
+      "sha256": "c6d85df8cc5700fd835499b63cb67c0be098a0aecec3a79eac6d09db74d5b1ad"
+    },
+    {
+      "path": "Licenses/DesktopTool/bottle-LICENSE",
+      "bytes": 1066,
+      "sha256": "af150257b1f7cce92b6207854f2e8f90ea9ae52d7cac758d13a47bd12e2a2443"
+    },
+    {
+      "path": "Licenses/DesktopTool/cffi-LICENSE",
+      "bytes": 1123,
+      "sha256": "5ba24ddc57067f9249add644c3afc41a5d6dc37e23433ef759d95df370b0af63"
+    },
+    {
+      "path": "Licenses/DesktopTool/clr_loader-LICENSE",
+      "bytes": 1079,
+      "sha256": "dd6bdca10cdc3b24c6b0b6cef5fd611b7feb6917f127833283ddcdb310d3b453"
+    },
+    {
+      "path": "Licenses/DesktopTool/pycparser-LICENSE",
+      "bytes": 1543,
+      "sha256": "0a9e78156ae8b96caf1b4f11ac2df424b83de29736f9e757630548a6272fdf90"
+    },
+    {
+      "path": "Licenses/DesktopTool/pyinstaller-COPYING.txt",
+      "bytes": 32604,
+      "sha256": "0598064c7d2718e38d7914a7d08343b2fa008e3bea9ebba2aa7a6ffa5900dd64"
+    },
+    {
+      "path": "Licenses/DesktopTool/pythonnet-AUTHORS.md",
+      "bytes": 5096,
+      "sha256": "65a13631f078bed51e9a4033dea257e57a7f23097f3003b1ce1ba1c8a9136c93"
+    },
+    {
+      "path": "Licenses/DesktopTool/pythonnet-LICENSE",
+      "bytes": 1104,
+      "sha256": "e1dc3a6ff017a6800dc27a7220500f512b95fbcd996d38ebbbff85c693245369"
+    },
+    {
+      "path": "Licenses/DesktopTool/pywebview-LICENSE",
+      "bytes": 1518,
+      "sha256": "4a988dd3598832cd3653de20dc33cb677d0fb53ab5551c879ca31280ae653675"
+    },
+    {
+      "path": "Licenses/DesktopTool/retoc-MIT.txt",
+      "bytes": 1090,
+      "sha256": "b51574ca8793428c91275f968a0eafa3875271f1c112bc5c4c10275ac28257f5"
+    },
+    {
+      "path": "Licenses/json-MIT.txt",
+      "bytes": 1048,
+      "sha256": "e91de14a15c126e70df8d30132529199211b47c5c899f82285a2ee943748f6f2"
+    },
+    {
+      "path": "Licenses/UE4SS-MIT.txt",
+      "bytes": 1085,
+      "sha256": "99e1d8f8b7cb68e8b2313380ae3b0c8115e39dfbc443fcf21fd67ab74ce1d57e"
+    },
+    {
+      "path": "Prerequisites/README.txt",
+      "bytes": 481,
+      "sha256": "d0c91a4b12bc19bbcdff9802225098879ff284a98bc969bba1743e2f441e3627"
+    },
+    {
+      "path": "Prerequisites/UE4SS/Game/Binaries/Win64/dwmapi.dll",
+      "bytes": 279552,
+      "sha256": "cf440b9eb8643bb7c434acfda696aee57fd981d185dca5e57fb8dbb18f8fc1cd"
+    },
+    {
+      "path": "Prerequisites/UE4SS/Game/Binaries/Win64/ue4ss/LICENSE",
+      "bytes": 1085,
+      "sha256": "99e1d8f8b7cb68e8b2313380ae3b0c8115e39dfbc443fcf21fd67ab74ce1d57e"
+    },
+    {
+      "path": "Prerequisites/UE4SS/Game/Binaries/Win64/ue4ss/UE4SS-settings.ini",
+      "bytes": 9425,
+      "sha256": "951cb91f1d4d35547a1b2607428b3e9321a2b5fb7cf236ee0443d8c77133cc11"
+    },
+    {
+      "path": "Prerequisites/UE4SS/Game/Binaries/Win64/ue4ss/UE4SS.dll",
+      "bytes": 20605440,
+      "sha256": "680a026890abb4d0df2211251f8defc1681a584275f1521dcc0fe30af480006f"
+    },
+    {
+      "path": "Prerequisites/UE4SS/Game/Binaries/Win64/ue4ss/UE4SS_SDK_Backends/UE4SS.json",
+      "bytes": 8032,
+      "sha256": "6b8c1725ff59a318b812d5952f63107778b4ceb22b882b297a3666ee9e06c8ff"
+    },
+    {
+      "path": "README-English.txt",
+      "bytes": 3997,
+      "sha256": "e7a6ed0c51054132d04259dd9718717a09bcb1614bb40340c12cdc0c347d2201"
+    },
+    {
+      "path": "README-中文.txt",
+      "bytes": 4123,
+      "sha256": "e6f9c48756081b105f3414b487ccd3e727234645eb7bf11d5337549f6095dc49"
+    },
+    {
+      "path": "SDK/Author-Guide.txt",
+      "bytes": 2955,
+      "sha256": "108808cf9c06c09f8d9556036f07695a8634b5117cfab461e47cdd4eb4d36d30"
+    },
+    {
+      "path": "SDK/Binding-Guide-English.txt",
+      "bytes": 2148,
+      "sha256": "028cd1d40fe02139dee0d155de5c51274ca9b5ecd6ccba1b8d40c9fca0f7e71e"
+    },
+    {
+      "path": "SDK/Binding-Guide-中文.txt",
+      "bytes": 2082,
+      "sha256": "9a213046e002bfd568f78f6133c1c5698dbbcce87aae6425f3b88f3e164695cd"
+    },
+    {
+      "path": "SDK/skin.example.json",
+      "bytes": 304,
+      "sha256": "aec71f5aeede83133edfc1ad864d7e4eff4dd8b82578d82e10298aa16213b391"
+    },
+    {
+      "path": "SDK/validate_skin.py",
+      "bytes": 4563,
+      "sha256": "f567d2717e2f9b3bc26048e8e3b6cd85417b580db00272dc5cfcafc8911bc518"
+    },
+    {
+      "path": "Setup.cmd",
+      "bytes": 248,
+      "sha256": "c7ed0cc541d1a9d9870a73265457dfe67210a24c967d045b72ce364a68255194"
+    },
+    {
+      "path": "Setup.ps1",
+      "bytes": 10752,
+      "sha256": "b59622b3b18bfaf2d68a79a09c045d215097213a7ac8da87d8cf96a07c11a96c"
+    },
+    {
+      "path": "Skin Author Guide(中文).docx",
+      "bytes": 213895,
+      "sha256": "bad9d2ef788c3205731d212b251425698fbee97189ba5e96d2dd7d0d9daca089"
+    },
+    {
+      "path": "Skin_Author_Guide_EN.docx",
+      "bytes": 213153,
+      "sha256": "d50f25b39f196921abbd369620c548c8a78f35cf878ffd5d3b49d23456c2b380"
+    },
+    {
+      "path": "使用教程.docx",
+      "bytes": 871734,
+      "sha256": "01f71aa35bc8ad1b6b7803341cbefebabe05759f162b76ab34a0e0d1ec366408"
+    },
+    {
+      "path": "手动安装-Manual-Install.txt",
+      "bytes": 1786,
+      "sha256": "52eab868ad53bfd61e00af54875b92952d53c12c43d524f9c95647ab8c0c389e"
+    }
+  ]
+}

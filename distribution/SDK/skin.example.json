@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "provider_id": "yourname",
+  "aircraft_id": "PP0021_su57",
+  "id": "blue",
+  "name": "Blue",
+  "author": "Your name",
+  "status": "draft",
+  "button": {
+    "text": "BLU",
+    "background_color": "#286B97",
+    "text_color": "#FFFFFF"
+  },
+  "bindings": []
+}

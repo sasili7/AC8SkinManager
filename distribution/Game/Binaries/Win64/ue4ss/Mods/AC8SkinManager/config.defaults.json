@@ -1,0 +1,10 @@
+{
+  "runtime_switch_enabled": true,
+  "package_registration_enabled": true,
+  "mission_switch_enabled": true,
+  "diagnostic_self_test": false,
+  "hangar_widget_candidates": [
+    "WBP_Menu_Hangar_AircraftSettings_Select_000_C",
+    "WBP_Menu_Hangar_AircraftSettings_000_C"
+  ]
+}

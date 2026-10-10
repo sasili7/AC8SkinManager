@@ -1,0 +1,21 @@
+Author workflow (0.8.1)
+
+1. Exit AC8 and update the manager with Setup.cmd. Run AC8SkinPackTool.exe directly; Python is not required.
+2. Choose the game root, open Create and import one finished texture-only aircraft ZIP or matching UTOC / UCAS / PAK files together.
+3. To read bindings, start AC8 offline and stay on the matching aircraft selection page with native materials. Choose STD first if a MOD is active.
+4. Click Capture aircraft in the desktop tool. Alternatively, press F7 in-game and click Load saved record in the tool.
+5. Expand Materials & original textures to inspect zero-based slot numbers, material names, original texture paths and case-sensitive parameters.
+   For each new texture, select the original texture it replaces to fill the parameter and all corresponding slots.
+   Only unique exact resource-path matches are suggested, and only for unfilled slots. Existing/manual bindings are preserved.
+   Custom-named assets need an explicit original-texture choice. Filenames alone cannot identify the intended aircraft part.
+   Non-enumerable parameters can still be entered manually. Two textures cannot own the same parameter in the same slot.
+6. Exit AC8, fill the livery, author and button details, build the package and click Download package. Choose a destination in the native save dialog.
+   Verify the bindings and in-game appearance before publishing.
+
+Import/export .bindings.json records for authors using the same aircraft, game build and native material layout.
+Refresh keeps an imported profile until a newer game capture arrives. Recapture after changing the game build, aircraft or native variant.
+Capture is read-only, runs only on request and requires offline aircraft selection. It does not run in flight or weapon selection.
+Game records: Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/BindingProfiles.
+Timeout: confirm the updated MOD is enabled, restart AC8 and select the matching aircraft. Press F7, then Load saved record.
+The EXE requires Windows WebView2 Runtime and .NET Framework 4.6.2 or newer.
+See the main README for MOD prerequisites. The painting tool is not included.

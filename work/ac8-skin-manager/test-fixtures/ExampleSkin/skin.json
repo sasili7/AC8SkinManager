@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "provider_id": "sample",
+  "id": "night_blue",
+  "aircraft_id": "PP0021_su57",
+  "name": "示例：夜空蓝 / Night Blue",
+  "author": "Your Name",
+  "description": "作者模板。请填写真实贴图参数与独立资源后再设为 ready。",
+  "status": "draft",
+  "bindings": [],
+  "button": {
+    "text": "夜空蓝",
+    "background_color": "#264A64",
+    "text_color": "#FFFFFF"
+  }
+}

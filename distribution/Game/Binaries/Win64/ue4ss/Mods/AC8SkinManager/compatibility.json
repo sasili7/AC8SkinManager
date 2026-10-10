@@ -1,0 +1,13 @@
+{
+  "release": "20261010-binding-assist",
+  "game_version": "1.1.2.0",
+  "platform": "Windows x64",
+  "engine_sha256": "51510e2a520565dbe81fb0d569e95cd4393077acaaa859371489b80b8128829f",
+  "override_loader": "0.2.0",
+  "override_loader_sha256": "225c8d6c3fbf5e8882cb8e334dbd3426cb24a1415b3585073cc4264ae834f851",
+  "ue4ss_sha256": [
+    "680a026890abb4d0df2211251f8defc1681a584275f1521dcc0fe30af480006f"
+  ],
+  "ue4ss_download": "https://github.com/UE4SS-RE/RE-UE4SS/releases/tag/experimental-latest",
+  "binding_capture_schema": 1
+}

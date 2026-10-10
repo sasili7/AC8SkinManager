@@ -1,0 +1,21 @@
+{
+  "engine_sha256": "51510e2a520565dbe81fb0d569e95cd4393077acaaa859371489b80b8128829f",
+  "revision": "20261008-cached-store",
+  "checks": {
+    "own_texture_header": true,
+    "all_truncated_headers_refused": true,
+    "wrong_signature": true,
+    "wrong_version": true,
+    "empty_packages": true,
+    "too_many_packages": true,
+    "wrong_entry_size": true,
+    "imports_refused": true,
+    "redirects_refused": true,
+    "unexpected_trailing_data_refused": true,
+    "duplicate_package_ids_refused": true,
+    "lua_native_entry_refuses_outside_game": true
+  },
+  "dll_sha256": "80eef7bd18675555f28955ff3bb63b5cf40ee41ab34c954898a7f21ee7e8080b",
+  "header_sha256": "0e50b7d66f1feb2aeb76ac21d9a551f28b821976f5af4f3efeb039fbdf771c2c",
+  "scope": "Native parser and engine build guards; live package registration requires game test."
+}

@@ -1,0 +1,23 @@
+Manual installation / 手动安装
+
+首选 Setup.cmd。手动安装前核对 README 的版本、路径和离线要求，并备份现有文件。
+Use Setup.cmd where possible. Check README requirements and back up existing files first.
+1. 只有全新安装 UE4SS 时，将 Prerequisites/UE4SS/Game 合并到游戏根目录。
+   For a clean UE4SS installation only, merge Prerequisites/UE4SS/Game into the game root.
+   已有 UE4SS 时保留现有设置和 MOD 列表，核对兼容版本，避免覆盖其它代理加载器。
+   Keep existing settings/MOD lists; verify compatibility and avoid replacing another proxy loader.
+2. 将顶层 Game 合并到游戏根目录，保留 Skins、payloads、config.json、selections.json。
+   Merge the top-level Game folder, preserving Skins, payloads, config.json and selections.json.
+3. Mods/mods.txt 中保留其他项并启用：
+   Preserve other entries and enable:
+   AC8OverrideLoader : 1
+   AC8SkinManager : 1
+4. 如果有 mods.json，也将这两项 mod_enabled 设为 true，保留其他项。
+   If mods.json exists, set mod_enabled=true for both, preserving other entries.
+5. 新安装可复制 config.defaults.json 为 config.json；已有配置不覆盖。
+   Optionally copy config.defaults.json to config.json on first install; never overwrite existing settings.
+6. 离线启动使用已有有效配置；首次配置可单独运行：
+   Keep existing working offline settings; for first setup you can run:
+   powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\Setup.ps1 -GamePath "D:\SteamLibrary\steamapps\common\ACE COMBAT 8" -ConfigureOffline -NoUI
+   然后按 Launch-Options.txt 设置 Steam。不要放进 ~mods。
+   Then use Launch-Options.txt in Steam. Do not install under ~mods.

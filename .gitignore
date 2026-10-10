@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+build/
+dist/
+outputs/
+work/ac8-skin-manager/test-runtime/
+work/ac8-skin-manager/package-tool-data/
+work/ac8-skin-manager/*test-report.json
+work/ac8-skin-manager/test-report.json
+work/ac8-skin-manager/framework-entry-*/
+*.log

@@ -1,0 +1,7 @@
+WINDOWS / 完整一行，仅用于生成本包离线配置后的 Windows 启动
+cmd /d /c "set EOS_USE_ANTICHEATCLIENTNULL=1&& %command% -anticheat_settings=AC8SkinManager_Offline.json"
+
+Keep %command% and the closing quote. 保留 %command% 和末尾英文双引号。
+If you use another valid offline configuration, keep its own complete launch options instead.
+已有其他有效离线配置时可沿用其完整参数，不要同时添加两个 -anticheat_settings 参数。
+Offline campaign only / 仅限离线单机战役。

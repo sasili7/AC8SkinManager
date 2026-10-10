@@ -1,0 +1,36 @@
+AC8 Skin Manager — Author API v1 / 作者接入
+
+每个皮肤包对应一个机型、一种皮肤；用独立资源路径，不覆盖游戏原贴图。
+One aircraft and one livery per pack. Use independent resource paths, not overrides of original textures.
+使用包内 AC8SkinPackTool.exe，将纯贴图 IoStore 包转换为 .ac8skin.zip。
+Use the included AC8SkinPackTool.exe to convert a texture-only IoStore pack to .ac8skin.zip.
+三件套 UTOC/UCAS/PAK 要同名并一起导入；不包含模型、武器、脚本或着色器修改。
+Import a matching UTOC/UCAS/PAK set together. Model/weapon/script/shader modifications are outside this format.
+作者必须核对实际材质槽和贴图参数；未知机型不能照抄 Su-57 绑定。
+Authors must verify actual material slots and texture parameters; do not reuse Su-57 bindings for another aircraft.
+
+独立标识 / Identity: <provider_id>__<aircraft_id>__<id>
+provider_id/id: 1–64 lowercase letters, digits, underscores or hyphens, beginning with a letter/digit.
+aircraft_id: actual internal ID, e.g. PP0021_su57. Display names are not IDs.
+Resource root / 资源根：/Game/AC8SkinManager/Skins/<provider_id>/<aircraft_id>/<id>/
+Unreal object path / 贴图对象路径：.../Texture_001.Texture_001
+bindings[]: target="body", material_index=0-based slot, parameter=case-sensitive texture parameter, texture=object path.
+schema_version=1; status="ready" requires real resources and at least one valid binding.
+skin.example.json is a draft only. Replace its IDs and bindings before publishing.
+可选按钮 / Optional button: text (1–3 Latin letters or Han characters), background_color/text_color (#RRGGBB).
+Four buttons per row, vertical scrolling, selected highlight and no hover descriptions are managed by the MOD.
+
+工具安装后的布局 / Installed layout:
+Mods/AC8SkinManager/Skins/<provider_id>/<aircraft_id>/<id>/skin.json
+Mods/AC8SkinManager/Native/containers/ASM_<short>.bin
+Mods/AC8OverrideLoader/payloads/0060_ASM_<short>/*.utoc, *.ucas, *.pak
+<short> = first 24 lowercase hex characters of SHA256(identity encoded as UTF-8).
+container.bin 是匹配当前原生登记格式的容器头，由作者工具生成，不是贴图。
+The .bin registration header is produced by the author tool; it is not a texture.
+Import packs before starting AC8. Restart after changes; this API does not mount newly installed containers mid-game.
+Do not redistribute a modified shared catalog/config, mods.txt/mods.json or another author's payload.
+Framework API v1 uses JSON files, not shared Lua globals between MODs.
+Use a stable ID for updates. Give different variants different IDs and independent resource/container IDs.
+纹理与插画的授权由皮肤作者负责 / Skin authors are responsible for the rights to their textures and artwork.
+
+Binding assistance / 材质绑定辅助：see Binding-Guide-中文.txt / Binding-Guide-English.txt.
