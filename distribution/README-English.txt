@@ -1,4 +1,4 @@
-﻿AC8 Skin Manager 0.8.1 — by sasili
+AC8 Skin Manager — by sasili
 
 Per-aircraft livery buttons in aircraft selection, with saved independent choices.
 Includes the in-game MOD, AC8OverrideLoader 0.2.0, optional UE4SS and setup scripts.
@@ -20,7 +20,7 @@ Installation
 4. After creating the offline configuration, save your existing Steam launch options and enter this complete line:
 cmd /d /c "set EOS_USE_ANTICHEATCLIENTNULL=1&& %command% -anticheat_settings=AC8SkinManager_Offline.json"
    Start through Steam. Offline single-player campaign only. Do not use online.
-5. Download the separate import/library tool, import compatible .ac8skin.zip packs, then restart offline.
+5. Run the included AC8SkinPackTool.exe, import compatible .ac8skin.zip packs, then restart offline.
    An empty library sleeps; installing the manager does not add a character livery.
 
 Use

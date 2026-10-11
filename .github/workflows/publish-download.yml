@@ -1,5 +1,11 @@
 name: Publish downloads
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'release-files/**'
+      - 'docs/RELEASE-NOTES.md'
+      - '.github/workflows/publish-download.yml'
   workflow_dispatch:
 permissions:
   contents: write
@@ -30,4 +36,3 @@ jobs:
           else
             gh release create download release-files/* --target "$GITHUB_SHA" --title "AC8 Skin Manager" --notes-file docs/RELEASE-NOTES.md --latest
           fi
-

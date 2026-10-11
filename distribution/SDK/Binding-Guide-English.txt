@@ -1,4 +1,4 @@
-Author workflow (0.8.1)
+Author workflow 
 
 1. Exit AC8 and update the manager with Setup.cmd. Run AC8SkinPackTool.exe directly; Python is not required.
 2. Choose the game root, open Create and import one finished texture-only aircraft ZIP or matching UTOC / UCAS / PAK files together.

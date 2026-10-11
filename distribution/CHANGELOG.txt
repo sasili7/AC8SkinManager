@@ -1,4 +1,4 @@
-﻿0.8.1 — 2026-10-10
+ — 2026-10-10
 Read-only on-demand binding capture, original-texture picker, grouped slots, record import/export, native save dialog.
 按需只读材质采集、原贴图选择、多槽位填写、记录导入导出及桌面保存。
 Existing bindings and imported profiles are preserved. Native/MOD coexistence is unchanged.

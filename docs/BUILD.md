@@ -16,13 +16,13 @@ The PyInstaller spec uses the same source layout and assets as the released EXE.
 
 ## Assemble an installable package
 
-Extract `release-files/AC8SkinManager-v0.8.1-Nexus.zip` to a new directory. Replace only `AC8SkinPackTool.exe` and `Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Native/registrar.dll` with your build outputs. Keep the dependency DLLs, scripts, settings and licenses. Regenerate the root compatibility.json file inventory with:
+Extract `release-files/AC8SkinManager.zip` to a new directory. Replace only `AC8SkinPackTool.exe` and `Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Native/registrar.dll` with your build outputs. Keep the dependency DLLs, scripts, settings and licenses. Regenerate the root compatibility.json file inventory with:
 
 ```powershell
-.\.venv\Scripts\python.exe tools\refresh_inventory.py 'D:\Build\AC8SkinManager-v0.8.1-Nexus'
+.\.venv\Scripts\python.exe tools\refresh_inventory.py 'D:\Build\AC8SkinManager'
 ```
 
-Do not install the `distribution` source template directly: binary prerequisites are intentionally supplied in the complete ZIP. Do not upload a modified archive under the original SHA256 or claim it is the original binary release.
+Do not install the `distribution` source template directly: binary prerequisites are intentionally supplied in the complete ZIP. Do not upload a modified archive under the original SHA256 or claim it is the published binary package.
 
 ## Tests
 

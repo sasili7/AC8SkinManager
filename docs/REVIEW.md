@@ -1,6 +1,6 @@
 # Review notes for Nexus moderators
 
-Release: AC8 Skin Manager 0.8.1. The original uploaded archive and separate EXE are in `release-files`. `docs/release-files.json` records every archive member's size and SHA256. `release-files/SHA256SUMS.txt` records the downloadable artifacts.
+Release: AC8 Skin Manager. The download archive and separate EXE are in `release-files`. `docs/release-files.json` records every archive member's size and SHA256. `release-files/SHA256SUMS.txt` records the downloadable artifacts.
 
 ## Compiled components
 
@@ -23,6 +23,6 @@ Release: AC8 Skin Manager 0.8.1. The original uploaded archive and separate EXE 
 
 ## Snapshot correspondence
 
-All manager Lua files match the uploaded archive byte for byte. The desktop Python/HTML/JS, spec and shipped UI assets are the v0.8.1 build inputs. `build.py` is a portable build entry added for this repository; it replaces a private development script that required local game and test-artwork paths. Public test staging and missing-fixture handling are adapted for a clean checkout. These adaptations do not change the shipped game/runtime source.
+All manager Lua files match the uploaded archive byte for byte. The desktop Python/HTML/JS, spec and shipped UI assets are the published build inputs. `build.py` is a portable build entry added for this repository; it replaces a private development script that required local game and test-artwork paths. Public test staging and missing-fixture handling are adapted for a clean checkout. These adaptations do not change the shipped game/runtime source.
 
-The user guides added to the upload are retained in `distribution`. Game executables, cooked game assets, livery resources, local logs, profiles, saved selections, credentials, backups and painting-tool experiments are excluded from this source snapshot.
+The four user/author guides are included in the complete ZIP and as separate download assets. The user guides use Setup.cmd and the manager-generated AC8SkinManager_Offline.json launch configuration. The desktop EXE was rebuilt from this source to remove the visible version label; the game runtime DLLs and Lua scripts remain unchanged. Game executables, cooked game assets, livery resources, local logs, profiles, saved selections, credentials, backups and painting-tool experiments are excluded from this source snapshot.

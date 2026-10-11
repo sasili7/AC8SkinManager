@@ -13,11 +13,15 @@
   "files": [
     {
       "path": "AC8SkinPackTool.exe",
-      "sha256": "5bed0d5230c31a6e1eb1b39ffa6b0ba261d1c2f44f3dc18463619a7e0c09107d"
+      "sha256": "5636887129cbfbc009e4341bf96b8efb5c946de7f10fdab3ff5c637e689c4cf8"
     },
     {
       "path": "CHANGELOG.txt",
-      "sha256": "c4d0d3f837affb8f0e2536e1270df26da2fdb0cda48e4044e677cc13ee99cc2e"
+      "sha256": "1d0d0f51121138164014798ce21765ff965b35e8228a4873da1f32b185f9df46"
+    },
+    {
+      "path": "English_User_Guide.docx",
+      "sha256": "2d44de8cddbd1962ab6f5a503c645742d2f40b3171be5af31219ca175c7f87f0"
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8OverrideLoader/dlls/main.dll",
@@ -176,14 +180,6 @@
       "sha256": "99e1d8f8b7cb68e8b2313380ae3b0c8115e39dfbc443fcf21fd67ab74ce1d57e"
     },
     {
-      "path": "Nexus-Description-English.txt",
-      "sha256": "5cafce53dc379d9528c096dee48d31ff636216b718dc1457aca96c6a31253895"
-    },
-    {
-      "path": "Nexus-Description-\u4e2d\u6587.txt",
-      "sha256": "b904547abacfe9a3b5e8f4d149c90b3f247d44fb5f6065c6381652b4f2b21794"
-    },
-    {
       "path": "Prerequisites/README.txt",
       "sha256": "d0c91a4b12bc19bbcdff9802225098879ff284a98bc969bba1743e2f441e3627"
     },
@@ -209,11 +205,11 @@
     },
     {
       "path": "README-English.txt",
-      "sha256": "e7a6ed0c51054132d04259dd9718717a09bcb1614bb40340c12cdc0c347d2201"
+      "sha256": "93e8da3644fc4780dd0f6cd677a78de23c7aa9e0747ab13a7f368c6b91c54661"
     },
     {
-      "path": "README-\u4e2d\u6587.txt",
-      "sha256": "e6f9c48756081b105f3414b487ccd3e727234645eb7bf11d5337549f6095dc49"
+      "path": "README-中文.txt",
+      "sha256": "34e6ab8876f2588d715564c8313fafb219424fc95b25073f79818680efa545ed"
     },
     {
       "path": "SDK/Author-Guide.txt",
@@ -221,11 +217,11 @@
     },
     {
       "path": "SDK/Binding-Guide-English.txt",
-      "sha256": "028cd1d40fe02139dee0d155de5c51274ca9b5ecd6ccba1b8d40c9fca0f7e71e"
+      "sha256": "9e1c3770a15a7280d0f6cf3485d78fc608cf94f2ace76d6b0a34a64faed98673"
     },
     {
-      "path": "SDK/Binding-Guide-\u4e2d\u6587.txt",
-      "sha256": "9a213046e002bfd568f78f6133c1c5698dbbcce87aae6425f3b88f3e164695cd"
+      "path": "SDK/Binding-Guide-中文.txt",
+      "sha256": "6c575c5905b439a93e0d9c66d97c01abfd906af8c6cce19d03b64883cb7184da"
     },
     {
       "path": "SDK/skin.example.json",
@@ -244,7 +240,19 @@
       "sha256": "b59622b3b18bfaf2d68a79a09c045d215097213a7ac8da87d8cf96a07c11a96c"
     },
     {
-      "path": "\u624b\u52a8\u5b89\u88c5-Manual-Install.txt",
+      "path": "Skin Author Guide(中文).docx",
+      "sha256": "bad9d2ef788c3205731d212b251425698fbee97189ba5e96d2dd7d0d9daca089"
+    },
+    {
+      "path": "Skin_Author_Guide_EN.docx",
+      "sha256": "d50f25b39f196921abbd369620c548c8a78f35cf878ffd5d3b49d23456c2b380"
+    },
+    {
+      "path": "使用教程.docx",
+      "sha256": "906b655e065cac76d3eed91f011c46b4e04376c6d7c853d708de6e7c17c60aa1"
+    },
+    {
+      "path": "手动安装-Manual-Install.txt",
       "sha256": "52eab868ad53bfd61e00af54875b92952d53c12c43d524f9c95647ab8c0c389e"
     }
   ],

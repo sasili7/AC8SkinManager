@@ -1,4 +1,4 @@
-﻿AC8 Skin Manager 0.8.1 — 作者 sasili
+AC8 Skin Manager — 作者 sasili
 
 在选机界面按机型显示独立涂装按钮，保存每架飞机的选择。
 本包包含游戏内管理器、AC8OverrideLoader 0.2.0、可选 UE4SS 和安装脚本。
@@ -21,7 +21,7 @@ UE4SS 3.0.1 Beta #0 / e3ba1016，可在安装界面勾选安装。
    保存原内容，再填入以下完整一行，从 Steam 启动：
 cmd /d /c "set EOS_USE_ANTICHEATCLIENTNULL=1&& %command% -anticheat_settings=AC8SkinManager_Offline.json"
    仅用于离线单机战役。不要用于联机。
-5. 单独下载涂装导入管理工具，导入适配的 .ac8skin.zip，然后重新离线启动游戏。
+5. 运行包内 AC8SkinPackTool.exe，导入适配的 .ac8skin.zip，然后重新离线启动游戏。
    空库会休眠，安装管理器本身不会凭空生成角色涂装。
 
 操作

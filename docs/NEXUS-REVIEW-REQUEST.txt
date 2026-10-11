@@ -1,8 +1,8 @@
-Subject: Request for review of quarantined AC8 Skin Manager v0.8.1
+Subject: Request for review of quarantined AC8 Skin Manager 
 
 Hello Nexus Mods team,
 
-My AC8 Skin Manager v0.8.1 upload has been quarantined by the automated safety checks. Please review the file.
+My AC8 Skin Manager  upload has been quarantined by the automated safety checks. Please review the file.
 
 Mod page: [insert the Nexus mod-page URL]
 Affected file: [insert the Nexus file ID/name]
