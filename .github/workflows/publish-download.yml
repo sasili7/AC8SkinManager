@@ -32,6 +32,11 @@ jobs:
           set -euo pipefail
           if gh release view download >/dev/null 2>&1; then
             gh release upload download release-files/* --clobber
+            for legacy in default.docx Skin.Author.Guide.docx; do
+              if gh release view download --json assets --jq '.assets[].name' | grep -Fxq "$legacy"; then
+                gh release delete-asset download "$legacy" --yes
+              fi
+            done
             gh release edit download --title "AC8 Skin Manager" --notes-file docs/RELEASE-NOTES.md --latest
           else
             gh release create download release-files/* --target "$GITHUB_SHA" --title "AC8 Skin Manager" --notes-file docs/RELEASE-NOTES.md --latest
