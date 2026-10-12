@@ -47,6 +47,12 @@ class InstallationTests(unittest.TestCase):
                                  str(RELEASE / 'Install-Manager.ps1'), '-GamePath', str(game)],
                                 capture_output=True, text=True, errors='replace', creationflags=0x08000000)
         self.assertEqual(result.returncode, expected, result.stdout + result.stderr)
+        # PowerShell wraps error text based on the full script-path width.
+        result.stderr = result.stderr.replace('\r', '').replace('\n', '')
+        if expected == 0:
+            for source in (RELEASE / REL / 'AC8SkinManager/Scripts').glob('*.lua'):
+                self.assertEqual((game / REL / 'AC8SkinManager/Scripts' / source.name).read_bytes(),
+                                 source.read_bytes(), source.name)
         return result
 
     def test_first_install_enables_both_without_clearing_other_mods(self):

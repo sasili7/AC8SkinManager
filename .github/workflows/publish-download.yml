@@ -4,6 +4,11 @@ on:
     branches: [main]
     paths:
       - 'release-files/**'
+      - 'release-base/**'
+      - 'tools/assemble_release.py'
+      - 'tools/release-delta.json'
+      - 'distribution/**'
+      - 'work/ac8-skin-manager/src/**'
       - 'docs/RELEASE-NOTES.md'
       - '.github/workflows/publish-download.yml'
   workflow_dispatch:
@@ -20,6 +25,8 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
+      - name: Assemble and verify the complete package
+        run: python3 tools/assemble_release.py
       - name: Check download hashes
         working-directory: release-files
         run: sha256sum --check SHA256SUMS.txt

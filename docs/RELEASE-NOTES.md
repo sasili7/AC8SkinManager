@@ -1,5 +1,9 @@
 # AC8 Skin Manager
 
+更新：修复选机界面正常、进入任务后 MOD 涂装丢失的加载流程；支持任务机体重新识别、资源延迟重试及恢复日志。88 项运行逻辑检查和 23 项安装检查通过，实际任务画面仍需实机确认。
+
+Update: restore saved MOD liveries on mission aircraft, retry transient streaming failures and record restoration diagnostics. 88 runtime checks and 23 installation checks passed; in-game rendering still requires verification.
+
 **[下载完整包 / Download complete package](https://github.com/sasili7/AC8SkinManager/releases/download/download/AC8SkinManager.zip)**
 
 游戏内按机型独立选择 MOD 涂装，附带中英文涂装制作、导入与管理工具。完整包包含可选 UE4SS、AC8OverrideLoader、安装脚本和四份中英文教程。解压完整包后运行 Setup.cmd；启动参数及详细流程见首页和包内 README。

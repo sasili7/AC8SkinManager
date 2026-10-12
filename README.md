@@ -4,6 +4,8 @@
 
 ## 下载
 
+任务涂装恢复更新：进入任务后自动给玩家机体恢复所选 MOD 涂装，资源未就绪时继续重试。安装后请完全退出并重新启动游戏。
+
 **[下载完整安装包](https://github.com/sasili7/AC8SkinManager/releases/latest/download/AC8SkinManager.zip)** · **[打开下载页面](https://github.com/sasili7/AC8SkinManager/releases/latest)**
 
 完整包内含游戏内 MOD、AC8SkinPackTool.exe、AC8OverrideLoader、可选安装的 UE4SS、安装脚本及四份中英文教程。桌面工具已经包含在完整包中，无需重复下载。
@@ -36,6 +38,8 @@ cmd /d /c "set EOS_USE_ANTICHEATCLIENTNULL=1&& %command% -anticheat_settings=AC8
 - 运行桌面工具需要 WebView2 和 .NET Framework；游戏组件需要 VC++ x64 运行库。安装器会检查游戏和组件兼容性。
 
 ## English
+
+Mission restoration update: the saved MOD livery is reapplied to the mission player aircraft, with bounded retries while resources load. Fully exit and restart after updating.
 
 AC8 Skin Manager adds per-aircraft MOD livery selection to the aircraft selection screen in ACE COMBAT 8 on PC. Each aircraft keeps its own selection. The bilingual desktop tool imports and manages compatible livery packages and helps creators package completed texture assets.
 

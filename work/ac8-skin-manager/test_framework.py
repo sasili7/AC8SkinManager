@@ -14,8 +14,6 @@ from validate_skin import validate
 OUT = ROOT.parents[1] / 'outputs/ac8-skin-manager'
 STAGE = OUT / 'AC8-Skin-Manager-0.1.0-Interface'
 MOD = STAGE / 'Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager'
-(MOD / 'Scripts').mkdir(parents=True, exist_ok=True)
-shutil.copy2(ROOT / 'vendor/json.lua', MOD / 'Scripts/json.lua')
 for source in (ROOT / 'src').glob('*.lua'):
     shutil.copy2(source, MOD / 'Scripts' / source.name)
 lua = LuaRuntime(unpack_returned_tuples=True)
@@ -519,9 +517,9 @@ root.IsA=function() return false end;local menu=require('menu').new();assert(not
 assert(ctx.widget.WidgetTree.RootWidget==root)
 ''')
 
-template = json.loads((ROOT / 'test-fixtures/ExampleSkin/skin.json').read_text(encoding='utf-8'))
+template = json.loads((STAGE / 'SDK/ExampleSkin/skin.json').read_text(encoding='utf-8'))
 assert not validate(template)
-ready = {**template, 'status': 'ready', 'bindings': [json.loads((ROOT / 'test-fixtures/binding.example.json').read_text())]}
+ready = {**template, 'status': 'ready', 'bindings': [json.loads((STAGE / 'SDK/binding.example.json').read_text())]}
 assert not validate(ready)
 for change in [
     {'schema_version': 2}, {'provider_id': '../escape'}, {'aircraft_id': 'Su-57'},
@@ -542,9 +540,6 @@ checks['author_cli_validates_template_utf8_limits_and_rejects_invalid_namespace'
 fixture_root = Path(tempfile.mkdtemp(prefix='framework-entry-', dir=ROOT))
 fixture_mod = fixture_root / 'Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager'
 shutil.copytree(MOD, fixture_mod)
-fixture_skin = fixture_mod / 'Skins/sasili/PP0021_su57/kamome/skin.json'
-fixture_skin.parent.mkdir(parents=True, exist_ok=True)
-fixture_skin.write_text(json.dumps({**template, 'provider_id': 'sasili', 'id': 'kamome'}), encoding='utf-8')
 vm = LuaRuntime(unpack_returned_tuples=True)
 vm.globals().fixture_root = str(fixture_root).replace('\\', '/')
 vm.execute('''
@@ -659,11 +654,12 @@ checks['fast_poll_updates_aircraft_restores_saved_skin_and_hides_without_hotkey'
 vm.execute('''
 test_adapter.absent=false;test_adapter.current='PP0021_su57';test_adapter.applied=false;test_adapter.fail=true;test_adapter.calls=0
 for i=1,15 do test_now=300+i*4;loops[1200]() end
-assert(test_adapter.calls==3)
-test_menu.on_click(2,'PP0021_su57|ui');assert(test_adapter.calls==4)
-test_now=500;loops[1200]();assert(test_adapter.calls==5)
+assert(test_adapter.calls>=4 and test_adapter.calls<=6)
+local before=test_adapter.calls
+test_menu.on_click(2,'PP0021_su57|ui');assert(test_adapter.calls==before+1)
+test_now=500;loops[1200]();assert(test_adapter.calls==before+2)
 ''')
-checks['automatic_restore_is_bounded_and_manual_click_permits_retry'] = True
+checks['automatic_restore_uses_backoff_and_manual_click_permits_immediate_retry'] = True
 
 vm.execute('''
 local execute=ExecuteInGameThread;local queued,callback=0,nil

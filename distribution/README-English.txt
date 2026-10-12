@@ -1,4 +1,6 @@
-AC8 Skin Manager — by sasili
+﻿AC8 Skin Manager — by sasili
+
+Mission restoration update: saved MOD liveries are reapplied to the mission player aircraft, with retries while resources load. Fully exit and restart after installation.
 
 Per-aircraft livery buttons in aircraft selection, with saved independent choices.
 Includes the in-game MOD, AC8OverrideLoader 0.2.0, optional UE4SS and setup scripts.

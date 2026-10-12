@@ -1,0 +1,27 @@
+{
+  "revision": "20261012-mission-restore",
+  "checks": {
+    "deleted_or_cross_aircraft_selection_is_pruned": true,
+    "failed_or_deleted_skin_never_disables_native_skin_menu": true,
+    "partial_registration_keeps_successful_skins_available": true,
+    "fully_blocked_registration_is_not_retried_forever": true,
+    "same_page_resolution_change_rebuilds_button_layout": true,
+    "collected_native_mid_is_rebuilt_without_retaining_mod_texture": true,
+    "failed_native_texture_reconstruction_leaves_previous_skin_intact": true,
+    "std_accepts_new_native_texture_on_the_original_mid": true,
+    "std_preserves_native_controller_mid_identity_after_in_place_refresh": true,
+    "mod_reapply_retains_latest_native_baseline_for_std": true,
+    "std_native_parameter_updates_roll_back_with_failed_persistence": true,
+    "missing_original_record_does_not_report_success_or_release_authority": true,
+    "native_list_stays_locked_during_mod_refresh_then_std_releases_it": true,
+    "native_animation_gate_is_not_mistaken_for_a_manager_owned_lock": true,
+    "destroyed_actor_state_is_pruned_in_repeated_switches": true,
+    "object_enumeration_is_cached_and_invalidated_for_new_widgets": true,
+    "mission_context_rejects_npcs_and_requires_offline_local_player": true,
+    "empty_manifest_does_not_hide_other_valid_skins": true,
+    "corrupt_primary_recovers_backup_and_preserves_damaged_file": true,
+    "invalid_json_types_use_defaults": true,
+    "empty_library_performs_zero_object_scans": true
+  },
+  "scope": "Isolated regression tests; actual game frame times and mission rendering require in-game verification."
+}

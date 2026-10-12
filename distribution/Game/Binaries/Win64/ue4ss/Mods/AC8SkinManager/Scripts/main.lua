@@ -51,6 +51,7 @@ end
 local core = Core.new(catalog, read("selections.json", {selections = {}}), persist)
 local adapter, menu = Adapter.new(config, catalog.aircraft, root), Menu.new()
 local native_mode = NativeMode.new()
+local reconcile = require("reconcile").new()
 local binding_capture = require("binding_capture").new(root, adapter, json)
 local last_probe_time = 0
 local function capture_probe(reason)
@@ -66,7 +67,6 @@ local function capture_probe(reason)
         log("接口记录已保存：AC8SkinManager/interface-probe.txt")
     else log("接口记录无法保存：" .. tostring(err)) end
 end
-local last_restore_attempt, last_restore_time, restore_failures = nil, 0, 0
 local last_ui_state, last_status_time = nil, 0
 local function report_ui(state, message, ctx)
     local now = os.time()
@@ -77,11 +77,12 @@ local function report_ui(state, message, ctx)
     local file = io.open(root .. "menu-status.json", "wb")
     if file then
         file:write(json.encode({state = state, message = tostring(message), updated_at = now,
-            revision = "20261009-native-coexistence", apply_status = core.status,
+            revision = "20261012-mission-restore", apply_status = core.status,
+            mission = adapter.mission_discovery, restoration = reconcile.status,
             package_registry = adapter.native_registry,
             dispatcher = game_thread_method and "ProcessEvent" or "default",
             aircraft_id = ctx and ctx.aircraft_id, model_ready = ctx and ctx.model_ready,
-            layout = menu.layout, selected_skin = core.saved.selections[core.aircraft or ""], applied_skin = core.applied_skin,
+            layout = menu.layout, selected_skin = core.saved.selections[ctx and ctx.aircraft_id or core.aircraft or ""], applied_skin = core.applied_skin,
             discovery = adapter.discovery or {}}))
         file:close()
     end
@@ -91,9 +92,9 @@ local function set_context(ctx)
     local changed = core:set_aircraft(ctx and ctx.aircraft_id or nil)
     if ctx and ctx.model_ready ~= false and active_component ~= ctx.fingerprint then
         active_component = ctx.fingerprint; core.applied_skin = "original"
-        last_restore_attempt = nil; restore_failures = 0
+        reconcile:reset()
     elseif not ctx and active_component then
-        active_component = nil; last_restore_attempt = nil
+        active_component = nil; reconcile:reset()
     end
     if changed and ctx and not config.runtime_switch_enabled then
         core.status = "点击按钮 · 页面测试"
@@ -110,36 +111,12 @@ local function choose(ctx, index)
         return
     end
     local success, message = core:apply(adapter)
-    last_restore_attempt = nil; restore_failures = 0 -- explicit click permits a fresh attempt
+    reconcile:reset() -- explicit click permits a fresh attempt
     native_mode:sync(adapter, core, config.runtime_switch_enabled)
     log(message)
 end
 local function restore_saved(ctx)
-    if not config.runtime_switch_enabled or ctx.model_ready == false or not ctx.aircraft_id then return end
-    local selected = core.saved.selections[ctx.aircraft_id]
-    if not selected then return end
-    local token = ctx.fingerprint .. "|" .. selected
-    if token ~= last_restore_attempt then restore_failures = 0 end
-    local rows = ctx.phase == "mission" and catalog.skins or core:rows()
-    for _, row in ipairs(rows) do
-        if row.id == selected and row.aircraft_id == ctx.aircraft_id and (row.status == "ready" or row.id == "original") then
-            if adapter:is_applied(ctx, row) then
-                core.applied_skin = selected; last_restore_attempt = nil; return
-            end
-            -- A native refresh has removed our material: clear the stale
-            -- highlight immediately and retry transient load failures later.
-            core.applied_skin = ""
-            local now = os.time()
-            if last_restore_attempt == token and (restore_failures >= 3 or now - last_restore_time < 3) then return end
-            last_restore_attempt, last_restore_time = token, now
-            local success, message = adapter:apply(ctx, row)
-            if success then core.applied_skin = selected; restore_failures = 0
-            else restore_failures = restore_failures + 1 end
-            if message then core.status = message end
-            if not success then log(message) end
-            return
-        end
-    end
+    return reconcile:update(adapter, core, config, ctx, log)
 end
 local diagnostic_done = false
 local function diagnostic_roundtrip(ctx)
@@ -247,6 +224,9 @@ if has_skins and type(NotifyOnNewObject) == "function" then
     pcall(NotifyOnNewObject, "/Script/UMG.UserWidget", function()
         adapter.discovery_dirty = true
     end)
+    pcall(NotifyOnNewObject, "/Script/Live.LivePlayerPlane", function()
+        adapter.discovery_dirty = true; idle_ticks = 0
+    end)
 end
 LoopAsync(1200, function()
     -- File check only. Actual UObject capture is explicitly requested and
@@ -286,18 +266,22 @@ LoopAsync(1200, function()
             local ctx, why = adapter:context()
             if adapter.prune then adapter:prune() end
             set_context(ctx)
+            local mission
             if ctx then diagnostic_roundtrip(ctx); restore_saved(ctx)
             elseif adapter.mission_context then
                 local needed = false
                 for _, skin in ipairs(catalog.skins) do
                     if skin.status == "ready" and core.saved.selections[skin.aircraft_id] == skin.id then needed = true; break end
                 end
-                local mission = needed and adapter:mission_context()
-                if mission then restore_saved(mission) else last_restore_attempt = nil end
-            else last_restore_attempt = nil end
+                mission = needed and adapter:mission_context()
+                if mission then restore_saved(mission) end
+            end
             native_mode:sync(adapter, core, config.runtime_switch_enabled)
             local good, reason = menu:render(core, ctx)
-            if not ctx then
+            if mission then
+                report_ui("mission", reconcile.status and reconcile.status.state == "applied"
+                    and "任务涂装已应用" or "任务涂装等待恢复", mission)
+            elseif not ctx then
                 report_ui("waiting", why)
                 if adapter.discovery and adapter.discovery.hangar_bodies > 0 and last_ui_error ~= why then
                     last_ui_error = why; capture_probe(why)
@@ -345,5 +329,5 @@ LoopAsync(33, function()
     if not queued then input_pending = false; log(queue_error) end
     return false
 end)
-log("按钮测试版已加载。选机界面自动显示四列按钮，F7 采集接口。")
+log("涂装管理器已加载。选机界面自动显示四列按钮，任务机体自动恢复所选涂装，F7 采集接口。")
 log("本组件线程回调方式：" .. (game_thread_method and "ProcessEvent" or "default"))

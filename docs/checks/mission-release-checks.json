@@ -1,0 +1,10 @@
+{
+  "date": "2026-10-12",
+  "runtime_checks_passed": 88,
+  "installation_checks_passed": 23,
+  "import_integration_tests_passed": 9,
+  "setup_mod_only_check_skipped": 1,
+  "archive_sha256": "cf0e5e3545c01687bfe185200aad5bfa40a82a959de06d6d05a4af3ca1ea2ae0",
+  "archive_bytes": 29263587,
+  "scope": "Isolated Windows regression and installation checks. Actual mission rendering and other physical computers were not tested."
+}

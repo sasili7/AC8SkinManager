@@ -1,0 +1,19 @@
+{
+  "revision": "20261012-mission-restore",
+  "checks": {
+    "custom_player_actor_without_pawn_methods_is_detected_and_skinned": true,
+    "direct_body_property_accepts_generated_component_names": true,
+    "reflected_component_array_fallback_is_supported": true,
+    "explicit_nonlocal_or_ai_actor_is_never_written": true,
+    "multiple_player_instances_and_unowned_bodies_are_rejected": true,
+    "hangar_and_offline_and_disabled_mission_guards_are_preserved": true,
+    "mission_choice_is_restored_without_a_visible_menu_or_current_core_aircraft": true,
+    "four_streaming_failures_recover_with_bounded_backoff": true,
+    "native_material_refresh_and_std_restore_on_mission_instance": true,
+    "new_mission_actor_resets_retry_backoff_and_dead_state_is_pruned": true,
+    "installed_hk_binding_slots_are_transactionally_applied": true,
+    "entry_loops_handoff_to_flight_restart_return_and_hide_menu": true,
+    "all_runtime_sources_parse": true
+  },
+  "scope": "Isolated Lua regression tests, not an in-game rendering or performance result."
+}

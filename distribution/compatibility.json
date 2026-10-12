@@ -1,5 +1,5 @@
 {
-  "release": "20261010-binding-assist",
+  "release": "20261012-mission-restore",
   "game_version": "1.1.2.0",
   "platform": "Windows x64",
   "engine_sha256": "51510e2a520565dbe81fb0d569e95cd4393077acaaa859371489b80b8128829f",
@@ -17,7 +17,7 @@
     },
     {
       "path": "CHANGELOG.txt",
-      "sha256": "1d0d0f51121138164014798ce21765ff965b35e8228a4873da1f32b185f9df46"
+      "sha256": "5e37852432d09b466bcbedb4aa09e17ec93ae76a2d1a523a0447a26f91e2754b"
     },
     {
       "path": "English_User_Guide.docx",
@@ -45,7 +45,7 @@
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/compatibility.json",
-      "sha256": "79a456635f5bcdc1886bcd0971d3b6d14a54bf4712983071e16f22489eb83596"
+      "sha256": "9476caa51998c5c84d8e4cc71a7a6bcc3d1c29ecd38e32ae2c199cb759271a8c"
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/config.defaults.json",
@@ -65,7 +65,7 @@
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/adapter.lua",
-      "sha256": "8f5d30569f31be1d374bc90f0e448cdf4e97d5db981c570c4a451b4bf99626af"
+      "sha256": "7edf778fb70cebb91f27505976f5b236ba4947c57ffaa78ce7af34e197e6776d"
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/binding_capture.lua",
@@ -81,7 +81,7 @@
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/main.lua",
-      "sha256": "5e8bb312f72e797e94b7d26b8ecdae8708571d115c999f50847eb675a2e37ed9"
+      "sha256": "d0dfb2a69a19578ebad0af699f4d6c7e63080b5dca9b4fe4ec38730432a31abf"
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/menu.lua",
@@ -94,6 +94,10 @@
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/presentation.lua",
       "sha256": "cb3be8780501d53a17788327f74d6954467cfebcdebf10b7d088b7ba7a40df04"
+    },
+    {
+      "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/reconcile.lua",
+      "sha256": "b57fc621f3d72a745bf722ec9dc6f3944e6e7d409b902bda4d470528952275b5"
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/registry.lua",
@@ -205,11 +209,11 @@
     },
     {
       "path": "README-English.txt",
-      "sha256": "93e8da3644fc4780dd0f6cd677a78de23c7aa9e0747ab13a7f368c6b91c54661"
+      "sha256": "b3f90b88455985459f86cdc67b295837a372685ce8e89d087540f036cc9f04e2"
     },
     {
       "path": "README-中文.txt",
-      "sha256": "34e6ab8876f2588d715564c8313fafb219424fc95b25073f79818680efa545ed"
+      "sha256": "aaa13720bc88fbcfc8ac48dc98f81cb3c5466342daf92151427341d7d6bcd4fa"
     },
     {
       "path": "SDK/Author-Guide.txt",

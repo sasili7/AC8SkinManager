@@ -371,31 +371,64 @@ function Adapter:fingerprint(component, mesh)
     return name(component) .. "|" .. name(mesh) .. "|" .. address
 end
 
--- Mission writes are restricted to a locally controlled LivePlayerPlane, never
--- NPCs, wingmen, cinematic planes or arbitrary meshes sharing an aircraft ID.
+-- LivePlayerPlane is the game's player-aircraft class. Do not require APawn
+-- methods: custom aircraft actors can be driven without Pawn possession.
+-- Explicit non-local/AI flags still veto writes. Without those interfaces only
+-- one non-hangar LivePlayerPlane with one owned body is accepted, offline only.
 function Adapter:mission_context()
-    if self.config.mission_switch_enabled == false or os.getenv("EOS_USE_ANTICHEATCLIENTNULL") ~= "1" then return end
-    local candidates = {}
-    for _, pawn in ipairs(self:objects("LivePlayerPlane")) do
-        pcall(function()
-            if not pawn:IsPlayerControlled() or not pawn:IsLocallyControlled() then return end
-            local components = pawn:GetComponentsByClass(StaticFindObject("/Script/Engine.SkeletalMeshComponent"))
-            local function inspect(component)
-                if not valid(component) or not name(component):match("%.PlaneBodyMesh$") then return end
-                if name(component):find("/Game/Maps/Hangar/", 1, true) then return end
-                if name(component:GetOwner()) ~= name(pawn) then return end
-                local mesh = component:GetSkeletalMeshAsset()
-                local id = name(mesh):match("(PP%d%d%d%d_[%w]+)")
-                if not id then return end
-                candidates[#candidates + 1] = {aircraft_id = id, component = component, pawn = pawn,
-                    fingerprint = self:fingerprint(component, mesh), phase = "mission", offline_verified = true,
-                    model_ready = true, interactive = true}
-            end
-            if type(components) == "table" then for _, component in ipairs(components) do inspect(component) end
-            else components:ForEach(function(_, item) inspect(item:get()) end) end
-        end)
+    local discovery = {state = "waiting-player", players = 0, bodies = 0, rejected = 0}
+    self.mission_discovery = discovery
+    if self.config.mission_switch_enabled == false or os.getenv("EOS_USE_ANTICHEATCLIENTNULL") ~= "1" then
+        discovery.state = "disabled"; return nil, discovery.state
     end
-    if #candidates == 1 then return candidates[1] end
+    local candidates, seen = {}, {}
+    for _, plane in ipairs(self:objects("LivePlayerPlane")) do
+        local path = name(plane)
+        if not path:find("/Game/Maps/Hangar/", 1, true) and not path:find("Default__", 1, true) then
+            local player_ok, player = pcall(function() return plane:IsPlayerControlled() end)
+            local local_ok, is_local = pcall(function() return plane:IsLocallyControlled() end)
+            if (player_ok and player == false) or (local_ok and is_local == false) then
+                discovery.rejected = discovery.rejected + 1
+            else
+                discovery.players = discovery.players + 1
+                local got_body, body = pcall(function() return plane.PlaneBodyMesh end)
+                local function inspect(component, explicit_body)
+                    if not valid(component) then return end
+                    local component_path = name(component)
+                    if seen[component_path] or (not explicit_body and not component_path:match("%.PlaneBodyMesh$"))
+                        or component_path:find("/Game/Maps/Hangar/", 1, true) then return end
+                    local owner_ok, owner = pcall(function() return component:GetOwner() end)
+                    if not owner_ok or name(owner) ~= path then return end
+                    local mesh_ok, mesh = pcall(function() return component:GetSkeletalMeshAsset() end)
+                    if not mesh_ok or not valid(mesh) then pcall(function() mesh = component.SkeletalMesh end) end
+                    local id = name(mesh):match("(PP%d%d%d%d_[%w]+)")
+                    if not id then return end
+                    seen[component_path] = true
+                    candidates[#candidates + 1] = {aircraft_id = id, component = component, pawn = plane,
+                        fingerprint = self:fingerprint(component, mesh), phase = "mission", offline_verified = true,
+                        model_ready = true, interactive = true}
+                end
+                if got_body and valid(body) then inspect(body, true)
+                else
+                    local ok, err = pcall(function()
+                        local components = plane:GetComponentsByClass(StaticFindObject("/Script/Engine.SkeletalMeshComponent"))
+                        if type(components) == "table" then for _, component in ipairs(components) do inspect(component) end
+                        elseif components then components:ForEach(function(_, item) inspect(item:get()) end) end
+                    end)
+                    if not ok then discovery.detail = tostring(err) end
+                end
+            end
+        end
+    end
+    discovery.bodies = #candidates
+    if discovery.players == 1 and #candidates == 1 then
+        discovery.state, discovery.aircraft_id = "ready", candidates[1].aircraft_id
+        discovery.component = name(candidates[1].component)
+        return candidates[1]
+    end
+    if discovery.players > 1 or #candidates > 1 then discovery.state = "ambiguous-player"
+    elseif discovery.players == 1 then discovery.state = "waiting-body" end
+    return nil, discovery.state
 end
 
 -- Native skin/weathering changes can replace materials on an existing actor.

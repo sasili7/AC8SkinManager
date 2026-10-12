@@ -245,7 +245,7 @@ with tempfile.TemporaryDirectory(prefix='ac8-stability-') as temporary:
     assert runtime.globals().scans == 0
     checks['empty_library_performs_zero_object_scans'] = True
 
-report = {'revision': '20261009-native-coexistence', 'checks': checks,
+report = {'revision': '20261012-mission-restore', 'checks': checks,
           'scope': 'Isolated regression tests; actual game frame times and mission rendering require in-game verification.'}
 (PROJECT / 'stability-test-report.json').write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding='utf-8')
 print(json.dumps(report, ensure_ascii=False, indent=2))
