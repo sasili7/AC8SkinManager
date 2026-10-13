@@ -1,5 +1,5 @@
 {
-  "release": "20261012-mission-restore",
+  "release": "20261013-flight-cache",
   "game_version": "1.1.2.0",
   "platform": "Windows x64",
   "engine_sha256": "51510e2a520565dbe81fb0d569e95cd4393077acaaa859371489b80b8128829f",
@@ -17,7 +17,7 @@
     },
     {
       "path": "CHANGELOG.txt",
-      "sha256": "5e37852432d09b466bcbedb4aa09e17ec93ae76a2d1a523a0447a26f91e2754b"
+      "sha256": "b012be134e8a46d1893dd334d3a77118c23e85ddd8091b15b9a69bbcdf12c63e"
     },
     {
       "path": "English_User_Guide.docx",
@@ -45,7 +45,7 @@
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/compatibility.json",
-      "sha256": "9476caa51998c5c84d8e4cc71a7a6bcc3d1c29ecd38e32ae2c199cb759271a8c"
+      "sha256": "fb61a227b65713a7b8a06260c103de35159d1cb97fd0329d6945fc07f186c321"
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/config.defaults.json",
@@ -65,7 +65,7 @@
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/adapter.lua",
-      "sha256": "7edf778fb70cebb91f27505976f5b236ba4947c57ffaa78ce7af34e197e6776d"
+      "sha256": "8f25f81d07998523f85e274cac21af3d198d35b1749edb3a8c445f5b0f9cc6ae"
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/binding_capture.lua",
@@ -81,7 +81,7 @@
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/main.lua",
-      "sha256": "d0dfb2a69a19578ebad0af699f4d6c7e63080b5dca9b4fe4ec38730432a31abf"
+      "sha256": "f82abc3f376c46718b22d7b87d3d4fe25ff88206932c33c4e47094e0d90b3e06"
     },
     {
       "path": "Game/Binaries/Win64/ue4ss/Mods/AC8SkinManager/Scripts/menu.lua",
@@ -209,11 +209,11 @@
     },
     {
       "path": "README-English.txt",
-      "sha256": "b3f90b88455985459f86cdc67b295837a372685ce8e89d087540f036cc9f04e2"
+      "sha256": "8778e7c759cafb39d9635468dd24dc23689fe21119e8785646045f57a222730a"
     },
     {
       "path": "README-中文.txt",
-      "sha256": "aaa13720bc88fbcfc8ac48dc98f81cb3c5466342daf92151427341d7d6bcd4fa"
+      "sha256": "10a9046fb8d8adb18bc84814e9ee1ad0e97731af8110cae8f8cdb440a96f7ca2"
     },
     {
       "path": "SDK/Author-Guide.txt",

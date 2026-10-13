@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-13",
+  "runtime_checks_passed": 97,
+  "installation_checks_passed": 23,
+  "setup_mod_only_check_skipped": 1,
+  "archive_sha256": "6ddd092a18bca83e25be1e96b886a4414573e1780f181ce3b473b17bf54ce79d",
+  "archive_bytes": 29265155,
+  "scope": "Isolated Windows regressions and installation tests; simulated engine-call counts. In-game frame times and other physical PCs were not measured."
+}

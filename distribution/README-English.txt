@@ -1,5 +1,7 @@
 ﻿AC8 Skin Manager — by sasili
 
+Flight performance update: cached player discovery, live material checks, and a roughly 30-second full fallback. Fully exit the game before installing.
+
 Mission restoration update: saved MOD liveries are reapplied to the mission player aircraft, with retries while resources load. Fully exit and restart after installation.
 
 Per-aircraft livery buttons in aircraft selection, with saved independent choices.

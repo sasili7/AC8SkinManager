@@ -78,6 +78,44 @@ function Adapter:objects(class)
     return result
 end
 
+-- Notifications only enqueue references. Inspect them on the game thread after
+-- construction, not inside NotifyOnNewObject. Mission HUD widgets must not
+-- invalidate the player cache or trigger a complete hangar search.
+function Adapter:queue_widget(widget)
+    self.new_widgets = self.new_widgets or {}
+    if #self.new_widgets < 32 then
+        self.new_widgets[#self.new_widgets + 1] = widget
+    else self.ui_rescan = true end
+end
+
+function Adapter:consume_widgets()
+    for _, widget in ipairs(self.new_widgets or {}) do
+        local path = name(widget)
+        if path:find("WBP_Menu_Hangar_", 1, true) then self.ui_rescan = true end
+    end
+    self.new_widgets = nil
+    if self.ui_rescan then
+        for class in pairs(self.object_cache) do
+            if class ~= "LivePlayerPlane" then self.object_cache[class] = nil end
+        end
+    end
+end
+
+-- Recheck cached menu visibility without enumerating the world. A new hangar
+-- widget or the periodic fallback below takes the full discovery path instead.
+function Adapter:flight_context()
+    self:consume_widgets()
+    if not self.last_mission or self.ui_rescan or self.discovery_dirty
+        or os.time() - (self.last_hangar_check or 0) >= 30 then return nil end
+    for _, class in ipairs(self.config.hangar_widget_candidates or {}) do
+        local cached = self.object_cache[class]
+        for _, widget in ipairs(cached and cached.objects or {}) do
+            if widget_visible(widget) then return nil end
+        end
+    end
+    return self:mission_context()
+end
+
 function Adapter:has_applied(aircraft, id)
     for key, state in pairs(self.applied) do
         if state.aircraft_id == aircraft and state.id == id and valid(self.components[key]) then
@@ -295,6 +333,9 @@ function Adapter:selected_aircraft(widget, ids)
 end
 
 function Adapter:context()
+    self:consume_widgets()
+    self.ui_rescan = false
+    self.last_hangar_check = os.time()
     local widgets = {}
     local discovery = {candidate_widgets = 0, visible_widgets = 0, hangar_bodies = 0, visible_bodies = 0}
     self.discovery = discovery
@@ -379,10 +420,28 @@ function Adapter:mission_context()
     local discovery = {state = "waiting-player", players = 0, bodies = 0, rejected = 0}
     self.mission_discovery = discovery
     if self.config.mission_switch_enabled == false or os.getenv("EOS_USE_ANTICHEATCLIENTNULL") ~= "1" then
+        self.last_mission = nil
         discovery.state = "disabled"; return nil, discovery.state
     end
+    local now = os.time()
+    local cached = self.mission_players
+    local expired = not cached or now - cached.time >= 30
+    if cached then
+        for _, plane in ipairs(cached.objects) do
+            if not valid(plane) then expired = true; break end
+        end
+    end
+    if expired or self.mission_dirty or self.discovery_dirty then
+        -- Player creation is the primary invalidation signal. The 30-second
+        -- fallback also works on UE4SS builds without object notifications.
+        cached = {time = now, objects = all("LivePlayerPlane")}
+        self.mission_players, self.mission_dirty = cached, false
+        self.mission_scans = (self.mission_scans or 0) + 1
+        if self.discovery_dirty then self.object_cache = {}; self.discovery_dirty = false end
+    end
+    discovery.scans = self.mission_scans or 0
     local candidates, seen = {}, {}
-    for _, plane in ipairs(self:objects("LivePlayerPlane")) do
+    for _, plane in ipairs(cached.objects) do
         local path = name(plane)
         if not path:find("/Game/Maps/Hangar/", 1, true) and not path:find("Default__", 1, true) then
             local player_ok, player = pcall(function() return plane:IsPlayerControlled() end)
@@ -424,8 +483,13 @@ function Adapter:mission_context()
     if discovery.players == 1 and #candidates == 1 then
         discovery.state, discovery.aircraft_id = "ready", candidates[1].aircraft_id
         discovery.component = name(candidates[1].component)
+        self.last_mission = candidates[1]
         return candidates[1]
     end
+    self.last_mission = nil
+    -- A missing/ambiguous player is transitional; retry discovery next tick,
+    -- rather than caching an empty result for the full stable-flight interval.
+    self.mission_players = nil
     if discovery.players > 1 or #candidates > 1 then discovery.state = "ambiguous-player"
     elseif discovery.players == 1 then discovery.state = "waiting-body" end
     return nil, discovery.state

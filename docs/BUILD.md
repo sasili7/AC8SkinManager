@@ -35,6 +35,7 @@ Do not install the `distribution` source template directly: binary prerequisites
 .\.venv\Scripts\python.exe work\ac8-skin-manager\test_stability.py
 .\.venv\Scripts\python.exe work\ac8-skin-manager\test_binding_capture.py
 .\.venv\Scripts\python.exe work\ac8-skin-manager\test_mission_restore.py
+.\.venv\Scripts\python.exe work\ac8-skin-manager\test_flight_performance.py
 ```
 
 Texture-fixture integration tests are skipped when the optional author's local `.ac8skin.zip` fixture is absent. This source snapshot does not distribute its artwork. Installer tests additionally require a local matching game installation and a complete release directory selected with `AC8_TEST_RELEASE`. Mock/unit tests do not validate actual game rendering or performance.

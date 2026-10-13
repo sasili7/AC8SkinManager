@@ -53,6 +53,9 @@ local adapter, menu = Adapter.new(config, catalog.aircraft, root), Menu.new()
 local native_mode = NativeMode.new()
 local reconcile = require("reconcile").new()
 local binding_capture = require("binding_capture").new(root, adapter, json)
+-- In-memory timing only: no per-tick log or diagnostic file writes in flight.
+-- os.clock measures this Lua callback, not the game's total frame time.
+local performance = {checks = 0, fast_checks = 0, slow_checks = 0, max_callback_ms = 0, over_8ms = 0}
 local last_probe_time = 0
 local function capture_probe(reason)
     local now = os.time()
@@ -62,7 +65,8 @@ local function capture_probe(reason)
     if not ok then result = "Probe failed: " .. tostring(result) end
     local file, err = io.open(root .. "interface-probe.txt", "wb")
     if file then
-        file:write("Menu test: " .. tostring(reason or "F7") .. "\n", result)
+        file:write("Menu test: " .. tostring(reason or "F7") .. "\n", result,
+            "\nPerformance (Lua clock; not frame time): ", json.encode(performance))
         file:close()
         log("接口记录已保存：AC8SkinManager/interface-probe.txt")
     else log("接口记录无法保存：" .. tostring(err)) end
@@ -70,14 +74,15 @@ end
 local last_ui_state, last_status_time = nil, 0
 local function report_ui(state, message, ctx)
     local now = os.time()
-    local identity = state .. "|" .. tostring(message) .. "|" .. tostring(ctx and ctx.ui_fingerprint)
-    if identity == last_ui_state and now - last_status_time < 5 then return end
+    local identity = state .. "|" .. tostring(message) .. "|"
+        .. tostring(ctx and (ctx.ui_fingerprint or ctx.fingerprint)) .. "|" .. tostring(core.applied_skin)
+    if identity == last_ui_state and (state == "mission" or now - last_status_time < 5) then return end
     if identity ~= last_ui_state then log(state .. ": " .. tostring(message)) end
     last_ui_state, last_status_time = identity, now
     local file = io.open(root .. "menu-status.json", "wb")
     if file then
         file:write(json.encode({state = state, message = tostring(message), updated_at = now,
-            revision = "20261012-mission-restore", apply_status = core.status,
+            revision = "20261013-flight-cache", apply_status = core.status, performance = performance,
             mission = adapter.mission_discovery, restoration = reconcile.status,
             package_registry = adapter.native_registry,
             dispatcher = game_thread_method and "ProcessEvent" or "default",
@@ -221,17 +226,19 @@ local idle_ticks = 0
 local has_skins = #catalog.skins > 0
 -- Notifications invalidate discovery only; they never touch a partially built UObject.
 if has_skins and type(NotifyOnNewObject) == "function" then
-    pcall(NotifyOnNewObject, "/Script/UMG.UserWidget", function()
-        adapter.discovery_dirty = true
+    pcall(NotifyOnNewObject, "/Script/UMG.UserWidget", function(widget)
+        if adapter.queue_widget then adapter:queue_widget(widget) end
     end)
     pcall(NotifyOnNewObject, "/Script/Live.LivePlayerPlane", function()
-        adapter.discovery_dirty = true; idle_ticks = 0
+        adapter.mission_dirty = true; idle_ticks = 0
     end)
 end
+local request_ticks = 0
 LoopAsync(1200, function()
     -- File check only. Actual UObject capture is explicitly requested and
     -- dispatched once on the game thread, including with an empty skin library.
-    if not pending and not input_pending then
+    request_ticks = request_ticks + 1
+    if not pending and not input_pending and request_ticks % 4 == 1 then
         local request = io.open(root .. "binding-request.json", "rb")
         if request then
             request:close()
@@ -262,8 +269,20 @@ LoopAsync(1200, function()
     end
     pending, pending_since, pending_warned = true, os.time(), false
     local queued, queue_error = pcall(game_thread, function()
+        local started = os.clock()
+        performance.checks = performance.checks + 1
         local ok, err = pcall(function()
+            local flight = adapter.flight_context and adapter:flight_context()
+            if flight then
+                performance.fast_checks = performance.fast_checks + 1
+                restore_saved(flight)
+                report_ui("mission", reconcile.status and reconcile.status.state == "applied"
+                    and "任务涂装已应用" or "任务涂装等待恢复", flight)
+                return
+            end
+            performance.slow_checks = performance.slow_checks + 1
             local ctx, why = adapter:context()
+            if ctx then adapter.last_mission = nil; adapter.mission_players = nil end
             if adapter.prune then adapter:prune() end
             set_context(ctx)
             local mission
@@ -295,6 +314,10 @@ LoopAsync(1200, function()
                 last_ui_error = reason; log(reason); capture_probe(reason)
             elseif good then last_ui_error = nil end
         end)
+        local elapsed = math.max(0, (os.clock() - started) * 1000)
+        performance.last_callback_ms = elapsed
+        performance.max_callback_ms = math.max(performance.max_callback_ms, elapsed)
+        if elapsed >= 8 then performance.over_8ms = performance.over_8ms + 1 end
         pending = false
         if not ok then log(err) end
     end)

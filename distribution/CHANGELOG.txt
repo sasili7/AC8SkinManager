@@ -1,4 +1,15 @@
-﻿2026-10-12 — Mission livery restoration / 任务涂装恢复
+﻿2026-10-13 — Flight performance / 飞行期间性能优化
+Reuse the player discovery cache during stable flight; keep live body/material checks.
+Refresh discovery on player creation or invalidation, with a periodic fallback of about 30 seconds.
+Avoid invalidating the player cache for ordinary mission HUD widgets.
+Stop periodic status-file rewrites in stable flight.
+Preserve automatic livery restoration on mission entry and restart.
+正常飞行复用玩家机体缓存，保留实时机体与材质检查。
+新机体通知、对象失效时重新查找，约每 30 秒进行完整兜底检查。
+普通任务 HUD 不再清空玩家缓存，稳定飞行停止定期写状态文件。
+保留进入任务、重开任务后的涂装恢复。
+
+2026-10-12 — Mission livery restoration / 任务涂装恢复
 Restore the saved livery on the newly created mission player aircraft.
 Support player aircraft without standard Pawn control methods and reflected body components.
 Retry temporary streaming/material failures with bounded backoff.

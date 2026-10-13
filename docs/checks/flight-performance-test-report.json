@@ -1,0 +1,21 @@
+{
+  "revision": "20261013-flight-cache",
+  "checks": {
+    "stable_player_discovery_is_cached_with_30_second_fallback": true,
+    "hud_notifications_do_not_trigger_discovery_but_hangar_does": true,
+    "reused_visible_hangar_widget_exits_fast_path": true,
+    "new_player_invalidates_cache_and_ambiguity_is_rejected": true,
+    "destroyed_player_and_delayed_body_recover_without_waiting_30_seconds": true,
+    "cache_still_checks_owner_mesh_and_explicit_ai_flags": true,
+    "notification_queue_has_a_bound_and_safe_fallback": true,
+    "ten_minute_flight_bounds_scans_and_avoids_status_and_material_writes": true,
+    "real_loops_repair_material_and_return_to_hangar": true
+  },
+  "simulated_counts": {
+    "prunes": 20,
+    "hangar_discoveries": 19,
+    "player_scans": 19,
+    "seconds": 600
+  },
+  "scope": "Engine-call counts with Lua fixtures; no measured game frame-time or FPS claims."
+}
